@@ -25,3 +25,6 @@ sudo service apache2 restart
 php api/index.php cli install
 php api/index.php cli add administrator foo@bar.com password123
 ````
+##Compatible with codeIgniter 3.0.2
+change the line 101 on api/index.php so that the application leads to your system folder 
+
