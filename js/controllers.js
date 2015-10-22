@@ -47,6 +47,7 @@ controllers.controller('root', ['$scope', '$location', '$q', 'user', function($s
 
     $scope.logout = function() {
         $scope.user.clear();
+        $location.path('navigation');
         //window.location.reload();
     };
     
@@ -81,7 +82,7 @@ controllers.controller('login', ['$scope', '$location', '$http', '$window', 'ale
             if (data.status) {
                 user.setEmail(data.email);
                 user.setToken(data.token);
-                $location.path('home');
+                $location.path('navigation');
                 //$window.location.reload();
             } else {
                 if (_.isEmpty(data.errors)) {
