@@ -54,6 +54,17 @@ class User extends REST_Controller {
 			return $output;
 		});
 	}
+	
+	public function information()
+	{
+		$this->form_validation->set_rules('resource', 'resource', 'required');
+		return Validation::validate($this, 'user', 'read', function($token, $output)
+		{
+			$output['status'] = true;
+			$output['token'] = $token;
+			return $output;
+		});
+	}
 
 }
 
