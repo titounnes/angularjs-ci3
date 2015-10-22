@@ -1,15 +1,20 @@
 <div class="content">
     <div class="jumbotron">
         <h1>Hello,
-            <span ng-hide="user.token">world</span>
-            <span ng-show="user.token">{{user.email}}</span>!
+            <span ng-show="!user.loggedIn()">world</span>
+            <span ng-show="user.getToken">{{user.getEmail()}}</span>!
         </h1>
         <p>This is a template for a simple marketing or informational website. It
             includes a large callout called a jumbotron and three supporting pieces
             of content. Use it as a starting point to create something more unique.
         </p>
-        <p ng-show="user.token">
-            <button class="btn btn-primary btn-lg" ng-click="information()">Test API Call</button>
+        <div ng-controller="administrator">
+        <p ng-show="permissions.administrator.contains('read')"  >
+            <a  class="btn btn-primary btn-lg" ng-click="information()">Test API Call</a>
+            <div class="row">
+                <div class="col-lg-12" ng-include="'partials/alert.html'">
+                </div>
+            </div>
         </p>
     </div>
     <div class="page-header">
