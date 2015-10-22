@@ -139,19 +139,12 @@ controllers.controller('home', ['$scope', '$location', '$http', 'user', function
 
 }]);
 
-controllers.controller('administrator', ['$scope', '$location', '$http', 'user', function($scope, $location, $http, user) {
+controllers.controller('administrator', ['$scope', '$location', '$http', 'user','alerts', function($scope, $location, $http, user,alerts) {
 
     $scope.user = user;
-    
+    $scope.alerts = alerts;
     $scope.information = function() {
-        $http.post('api/user/information', {
-            token: $scope.user.token
-        }).success(function(data) {
-            if (data.status) {
-                alert(data.message);
-            } else {
-            }
-        });
+        $scope.alerts.success($scope.user.getToken());
     };
 
 }]);
